@@ -1,0 +1,18 @@
+{
+  "name": "kafka",
+  "version": "1.0.0",
+  "description": "",
+  "main": "kafka.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "zookeeper": "docker run --name zookeeper --rm -p 2181:2181 -d zookeeper",
+    "kafka": "docker run --name kafka -p 9092:9092 --rm -e KAFKA_ZOOKEEPER_CONNECT=host.docker.internal:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://host.docker.internal:9092 -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 confluentinc/cp-kafka",
+    "init": "zookeeper && kafka"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "kafkajs": "^1.15.0"
+  }
+}
